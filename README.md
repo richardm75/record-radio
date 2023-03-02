@@ -99,7 +99,7 @@ Everything is normal. If preferred, use systemd timers. One of my recordings loo
 
 ## Examples of station details
 
-I commonly record from my local NPR station, KPBS. Also, from the BBC World Service and BBC Radio 4. Here is how these are specified in the two scripts
+I commonly record from my local NPR station, KPBS. Also, from the BBC World Service and BBC Radio 4. The Wiki explains how I discovered the stream URLs. Here is how these are specified in the two scripts
 
 Windows DOS, Rec-Radio.bat
 
@@ -111,7 +111,7 @@ set stURL[1]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_world_ser
 set stName[2]=Radio4
 set stURL[2]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio=96000.norewind.m3u8"
 set stName[3]=unused
-set stURL[3]=urlunused
+set stURL[3]="urlunused"
 etc.
 ```
 
@@ -144,7 +144,5 @@ Maybe. Most hosting sites run Linux bash. Two requirements must be met,
 1. You need cron to make scheduled recordings. (Most hosters provide cron)
 2. You must have ffmpeg available on the site.
     * A few hosters include ffmpeg. Check by running `ffmpeg -h` in a terminal.
-    * If not, you can try installing a pre-built cross-platform binary from <https://ffbinaries.com/downloads>. Put it in a local directory. It should work fine for this purpose. 
+    * If not, you can try installing a pre-built cross-platform binary from <https://ffbinaries.com/downloads>. Put it in a local directory. It should work fine for this purpose.
       * To check which binary to download, examine the dashboard carefully to see what is used, or perhaps open a terminal and issue command `uname -a`
-
-

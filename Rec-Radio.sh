@@ -27,7 +27,6 @@
 # If installed to a private location, enter /full-path/ffmpeg
 ffmpegPath="ffmpeg"
 # Location to store recordings.
-# Note: a subdirectory /NameOfShow will be added automatically.
 RecordingPath="$HOME/Radio-Recordings"
 # Log File (optional)
 # LoggingRequired can be "yes" or "no". If "yes", also set the file path for log file RecLog.txt.
@@ -68,7 +67,7 @@ if [[ ${StationName} == "" ]]; then
     exit
 fi
 
-# Recording will be placed in /tmp/rpiradio/
+# Recording will initially be written in /tmp/rpiradio/
 # Why there? We cannot use RecordingPath/temp because pscp is used in rpiradio.bat to fetch mp3 files.
 # Unfortunately, pscp acts like find and finds all mp3 file below RecordingPath. To avoid that problem we use /tmp.
 # Beware: on Pi, /tmp gets cleared out every night. So we need to recreate /tmp/rpiradio/ if it is missing. 
