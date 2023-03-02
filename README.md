@@ -30,7 +30,7 @@ The **SETUP SECTION** near the start of the script contains all paths and variab
 Make sure to set the proper paths for the system in place of those already in the script. All paths must exist before the script is run. Don not add a trailing slash at the end of paths - the script does that.
 
 * `ffmpegpath` - the location of ffmpeg.exe
-* `recordingpath` - the location for recorded files. IN the Windows scripts a subfolder `NameOfShow` will be placed under this location and created automatically if it doesn't already exist.
+* `recordingpath` - the location for recorded files. In the Windows scripts a subfolder `NameOfShow` will be placed under this location and created automatically if it doesn't already exist.
 * `logfilepath` - the location for the log file named `RecLog.txt`. This file will only be used if `LoggingRequired` is set to yes.
 
 The Linux bash version keeps station names and their corresponding stream URLs in a `stations` array. Insert as many as you wish.
@@ -45,24 +45,24 @@ For Linux remember to make the script executable: `chmod +x Rec-Radio.sh`
 
 * The recorded filename will be `NameOfShow-date_time_rec.mp3`
 * For Windows scripts the recorded file will be placed under a subfolder `NameOfShow\` under the given recording path.
-* FOr the bash version the recorded file will be recorded initially into /tmp/rpiradio. When the recording is completed, the file is moved directly into the given recording path.
+* For the bash version the recorded file will be recorded initially into /tmp/rpiradio. When the recording is completed, the file is moved directly into the given recording path.
 * Metadata (ID3) tags are added.
   * If you want different tags, change the ffmpeg statement (carefully). For available tags see <https://gist.github.com/eyecatchup/0757b3d8b989fe433979db2ea7d95a01>
 * Recording takes place in the background.
-* Feel free to do anything while the script runs, e.g.watch videos, listen to internet radio, etc. Multiple copies of the script can run at the same time.
+  * Feel free to do anything while the script runs, e.g.watch videos, listen to internet radio, etc. Multiple copies of the script can run at the same time.
 * Using Task Scheduler on Windows enables scheduled recordings, even when the system is in "sleep mode". See the Wiki for details. Linux has no easy way to do this. The assumption is that a Linux system is always on.
 
 ### Note 2
 
-The script opens a minimized window which contains a couple of messages. There may also be some info messages from DOS and ffmpeg. If not errors, ignore them.
+The DOS script opens a minimized window which contains a couple of messages. There may also be some info messages from DOS and ffmpeg. If not errors, ignore them.
 
 ### Note 3
 
-For the case when a recording goes onto a hard drive that may be sleeping, not spinning, the script issues a touch command before ffmpeg.exe to spin the disk up. A sleeping HD takes time to reach operating speed, so the start of recording will be delayed. If your HD does not spin down, or if using SSDs, feel free to remove or comment out the 'type nul' and 'del' lines prior to ffmpeg.exe
+To cover the case when a recording destination is a hard drive that may be sleeping, not spinning, the script issues a touch command before ffmpeg.exe to spin the disk up. A sleeping HD takes time to reach operating speed, so the start of recording will be delayed. If your HD does not spin down, or if using SSDs, feel free to remove or comment out the 'type nul' and 'del' lines prior to ffmpeg.exe
 
 ## Scheduling Recordings
 
-To record show broadcast in a different country, the most frustrating problem is sorting out the switch from standard time to daylight savings time. The problem is that the switch may happen on different weekends in different countries. This is a pain in the neck and messes up scheduled timestamps. For example,
+To record shows broadcast in a different country, the most frustrating problem is sorting out the switch from standard time to daylight savings time. The problem is that the switch may happen on different weekends in different countries. This is a pain in the neck and messes up scheduled timestamps. For example,
 
 * DST in most of the United States begins each year on the second Sunday in March, when clocks are set forward by one hour. They are turned back again to standard time on the first Sunday in November as DST ends. But Hawaii and Arizona are different!
 * In the UK, DST starts on the last Sunday in March, and ends on the last Sunday in October.
