@@ -1,6 +1,6 @@
 # Record-Radio
 
-The Rec-Radio scripts will record internet radio. There are two versions: Windows DOS (.bat), and Linux bash (.sh). Typically Rec-Radio is scheduled to run via Windows Task Scheduler, or Linux crontab. This makes Rec-Radio an equivalent of a DVR for internet radio shows.
+The Rec-Radio scripts will record live internet radio. There are two versions: Windows DOS (.bat), and Linux bash (.sh). Typically Rec-Radio is scheduled to run via Windows Task Scheduler, or Linux crontab. This makes Rec-Radio an equivalent of a DVR for internet radio shows.
 
 I created Rec-Radio as a sample script to avoid missing live shows broadcast when I wasn't around. I live in the USA, on the west coast, and sometimes want to record UK shows that are on while I am asleep. Rec-Radio is my answer. I started with the DOS version, then added Linux in order to run it on a Raspberry Pi. In practice I run the bash script on a Raspberry Pi and schedule my recordings there with crontab. Since my day-to-day computer is Windows, I added another DOS script (rpiradio.bat) to transfer the recorded mp3 files over to Windows. I run rpiradio.bat automatically every time my PC  wakes up from sleep (See the Wiki for details).
 
@@ -27,7 +27,7 @@ Example: `rec-Radio.bat KPBS myshow 30`
 
 The **SETUP SECTION** near the start of the script contains all paths and variables necessary to customize Rec-Radio for a system.
 
-Make sure to set the proper paths for the system in place of those already in the script. All paths must exist before the script is run. Don not add a trailing slash at the end of paths - the script does that.
+Make sure to set the proper paths for the system in place of those already in the script. All paths must exist before the script is run. Do not add a trailing slash at the end of paths - the script does that.
 
 * `ffmpegpath` - the location of ffmpeg.exe
 * `recordingpath` - the location for recorded files. In the Windows scripts a subfolder `NameOfShow` will be placed under this location and created automatically if it doesn't already exist.
@@ -44,8 +44,8 @@ For Linux remember to make the script executable: `chmod +x Rec-Radio.sh`
 ### Note 1
 
 * The recorded filename will be `NameOfShow-date_time_rec.mp3`
-* For Windows scripts the recorded file will be placed under a subfolder `NameOfShow\` under the given recording path.
-* For the bash version the recorded file will be recorded initially into /tmp/rpiradio. When the recording is completed, the file is moved directly into the given recording path.
+  * For Windows scripts the recorded file will be placed under a subfolder `NameOfShow\` under the given recording path.
+  * For the bash version the recorded file will be recorded initially into /tmp/rpiradio. When the recording is completed, the file is moved directly into the given recording path.
 * Metadata (ID3) tags are added.
   * If you want different tags, change the ffmpeg statement (carefully). For available tags see <https://gist.github.com/eyecatchup/0757b3d8b989fe433979db2ea7d95a01>
 * Recording takes place in the background.
@@ -99,7 +99,7 @@ Everything is normal. If preferred, use systemd timers. One of my recordings loo
 
 ## Examples of station details
 
-I commonly record from my local NPR station, KPBS. Also, from the BBC World Service and BBC Radio 4. The Wiki explains how I discovered the stream URLs. Here is how these are specified in the two scripts
+I commonly record from my local NPR station, KPBS. Also, from the BBC World Service and BBC Radio 4. The [Wiki](https://github.com/richardm75/record-radio/wiki) explains how I discovered the stream URLs. Here is how these are specified in the two scripts
 
 Windows DOS, Rec-Radio.bat
 
@@ -124,12 +124,13 @@ stations["World"]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_worl
 stations["Radio4"]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio=96000.norewind.m3u8"
 ```
 
-## To test the DOS script manually and record live radio for 2 minutes
+## To test the script manually and record live radio for 2 minutes
 
 * Make sure all paths are correct for your system (see SETUP SECTION).
 * Open a terminal window.
 * cd to wherever you stored this script.
-* Run the script with a command: `Rec-Radio.bat Station LiveRadio 2`
+* Choose a "Station" to record, one that is already added into the SETUP SECTION.
+* Run the DOS script with the command: `Rec-Radio.bat Station LiveRadio 2`
   * For Linux bash use `./Rec-Radio.sh Station LiveRadio 2`
 * For DOS a minimized window will start. You can maximize/minimize it if you want.
   * For Linux, the starting terminal remains running.
