@@ -1,12 +1,12 @@
 # Record-Radio
 
-The Rec-Radio scripts will record live internet radio. There are two versions: Windows DOS (.bat), and Linux bash (.sh). Typically Rec-Radio is scheduled to run via Windows Task Scheduler, or Linux crontab. This makes Rec-Radio an equivalent of a DVR for internet radio shows.
+The Rec-Radio example scripts will record live internet radio. There are two versions: Windows DOS (.bat), and Linux bash (.sh). Typically Rec-Radio is scheduled to run via Windows Task Scheduler, or Linux crontab. This makes Rec-Radio an equivalent of a DVR for internet radio shows.
 
 I created Rec-Radio as a sample script to avoid missing live shows broadcast when I wasn't around. I live in the USA, on the west coast, and sometimes want to record UK shows that are on while I am asleep. Rec-Radio is my answer. I started with the DOS version, then added Linux in order to run it on a Raspberry Pi. In practice I run the bash script on a Raspberry Pi and schedule my recordings there with crontab. Since my day-to-day computer is Windows, I added another DOS script (rpiradio.bat) to transfer the recorded mp3 files over to Windows. I run rpiradio.bat automatically every time my PC  wakes up from sleep (See the Wiki for details).
 
 Rec-Radio uses ffmpeg to do the recording. It is available in Linux package managers. For Windows, ffmpeg.exe can be downloaded as a pre-compiled binary from several sites. For example download [ffmpeg-git-essentials.7z](https://www.gyan.dev/ffmpeg/builds/)
 
-The scripts here do not contain any specific radio stations. You will want to add your own. I provide my own examples below. The Wiki provides some information about Internet Radio Streaming and includes some tips on how to determine the URL required to stream from your favorite station.
+The scripts here do not contain any specific radio stations. You will want to add your own. I provide my own examples below. The [Wiki](https://github.com/richardm75/record-radio/wiki) provides some information about Internet Radio Streaming and includes tips on how to determine the URL required to stream from your favorite station.
 
 ## Usage
 
@@ -124,7 +124,7 @@ stations["World"]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_worl
 stations["Radio4"]="http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_fourfm/bbc_radio_fourfm.isml/bbc_radio_fourfm-audio=96000.norewind.m3u8"
 ```
 
-## To test the script manually and record live radio for 2 minutes
+## Test the script manually and record live radio for 2 minutes
 
 * Make sure all paths are correct for your system (see SETUP SECTION).
 * Open a terminal window.
